@@ -87,7 +87,7 @@ is a full cartesian system where x, y and z moves are handled by seperate motors
 Cases 1 and 2 cover all needed xy H gantry systems. If you get results mirrored etc. you can swap motor connections for x and y. If a motor turns in 
 the wrong direction change INVERT_X_DIR or INVERT_Y_DIR.
 */
-#define DRIVE_SYSTEM 0
+#define DRIVE_SYSTEM 3
 
 // ##########################################################################################
 // ##                               Calibration                                            ##
@@ -107,7 +107,7 @@ the wrong direction change INVERT_X_DIR or INVERT_Y_DIR.
       /** \brief Pitch in mm of drive belt. GT2 = 2mm */
       #define BELT_PITCH 2
       /** \brief Number of teeth on X, Y and Z tower pulleys */
-      #define PULLEY_TEETH 20
+      #define PULLEY_TEETH 36
       #define PULLEY_CIRCUMFERENCE (BELT_PITCH * PULLEY_TEETH)
     #elif DELTA_DRIVE_TYPE == 1
       /** \brief Filament pulley diameter in milimeters */
@@ -119,7 +119,7 @@ the wrong direction change INVERT_X_DIR or INVERT_Y_DIR.
     #define STEPS_PER_ROTATION 400
 
     /** \brief Micro stepping rate of X, Y and Y tower stepper drivers */
-    #define MICRO_STEPS 8
+    #define MICRO_STEPS 16
 
     /** \brief Number of delta moves in each line. Moves that exceed this figure will be split into multiple lines.
     Increasing this figure can use a lot of memory since 7 bytes * size of line buffer * MAX_SELTA_SEGMENTS_PER_LINE
@@ -179,7 +179,8 @@ the wrong direction change INVERT_X_DIR or INVERT_Y_DIR.
 // 99 Generic thermistor table 3
 // 100 is AD595
 // 101 is MAX6675
-#define EXT0_TEMPSENSOR_TYPE 1
+// original 1
+#define EXT0_TEMPSENSOR_TYPE 6 
 // Analog input pin for reading temperatures or pin enabling SS for MAX6675
 #define EXT0_TEMPSENSOR_PIN TEMP_0_PIN
 // WHich pin enables the heater
@@ -418,8 +419,12 @@ If you have a PTC thermistor instead of a NTC thermistor, keep the adc values in
   {441*4,120*8},{513*4,110*8},{588*4,100*8},{734*4,80*8},{856*4,60*8},{938*4,40*8},{986*4,20*8},{1008*4,0*8},{1018*4,-20*8}	}
 
 /** Number of entries in the user thermistortable 1. Set to 0 to disable it. */
-#define NUM_TEMPS_USERTHERMISTOR1 0
-#define USER_THERMISTORTABLE1  {}  
+#define NUM_TEMPS_USERTHERMISTOR1 47
+#define USER_THERMISTORTABLE1  {\
+  {22*4, 300*8},{30*4, 270*8},{33*4, 265*8},{36*4, 260*8},{39*4, 255*8},{42*4, 250*8},{47*4, 245*8},{51*4, 240*8},{56*4, 235*8},{63*4, 230*8},{69*4, 225*8},{74*4, 220*8},{81*4, 215*8},{90*4, 210*8},{98*4, 205*8},\
+  {107*4, 200*8},{119*4, 195*8},{129*4, 190*8},{142*4, 185*8},{156*4, 180*8},{171*4, 175*8},{187*4, 170*8},{204*4, 165*8},{224*4, 160*8},{245*4, 155*8},{271*4, 150*8},{297*4, 145*8},{321*4, 140*8},{351*4, 135*8},\
+  {370*4, 130*8},{402*4, 125*8},{451*4, 120*8},{502*4, 115*8},{533*4, 110*8},{551*4, 105*8},{570*4, 100*8},{610*4, 95*8},{661*4, 90*8},{731*4, 80*8},{801*4, 70*8},\
+  {856*4, 60*8},{901*4, 50*8},{950*4, 40*8},{977*4, 30*8},{991*4, 20*8},{1003*4, 10*8},{1011*4, 0*8}}
 /** Number of entries in the user thermistortable 2. Set to 0 to disable it. */
 #define NUM_TEMPS_USERTHERMISTOR2 0
 #define USER_THERMISTORTABLE2  {}  
@@ -590,23 +595,23 @@ on this endstop.
 #define ENDSTOP_PULLUP_Z_MIN false
 #define ENDSTOP_PULLUP_X_MAX true
 #define ENDSTOP_PULLUP_Y_MAX true
-#define ENDSTOP_PULLUP_Z_MAX false
+#define ENDSTOP_PULLUP_Z_MAX true
 
 //set to true to invert the logic of the endstops
-#define ENDSTOP_X_MIN_INVERTING true
-#define ENDSTOP_Y_MIN_INVERTING true
-#define ENDSTOP_Z_MIN_INVERTING true
-#define ENDSTOP_X_MAX_INVERTING false
-#define ENDSTOP_Y_MAX_INVERTING false
+#define ENDSTOP_X_MIN_INVERTING false
+#define ENDSTOP_Y_MIN_INVERTING false
+#define ENDSTOP_Z_MIN_INVERTING false
+#define ENDSTOP_X_MAX_INVERTING true
+#define ENDSTOP_Y_MAX_INVERTING true
 #define ENDSTOP_Z_MAX_INVERTING true
 
 // Set the values true where you have a hardware endstop. The Pin numbe ris taken from pins.h.
 
-#define MIN_HARDWARE_ENDSTOP_X true
-#define MIN_HARDWARE_ENDSTOP_Y true
-#define MIN_HARDWARE_ENDSTOP_Z true
-#define MAX_HARDWARE_ENDSTOP_X false
-#define MAX_HARDWARE_ENDSTOP_Y false
+#define MIN_HARDWARE_ENDSTOP_X false
+#define MIN_HARDWARE_ENDSTOP_Y false
+#define MIN_HARDWARE_ENDSTOP_Z false
+#define MAX_HARDWARE_ENDSTOP_X true
+#define MAX_HARDWARE_ENDSTOP_Y true
 #define MAX_HARDWARE_ENDSTOP_Z true
 
 //If your axes are only moving in one direction, make sure the endstops are connected properly.
@@ -634,9 +639,9 @@ on this endstop.
 
 //// ENDSTOP SETTINGS:
 // Sets direction of endstops when homing; 1=MAX, -1=MIN
-#define X_HOME_DIR -1
-#define Y_HOME_DIR -1
-#define Z_HOME_DIR -1
+#define X_HOME_DIR 1
+#define Y_HOME_DIR 1
+#define Z_HOME_DIR 1
 
 // Delta robot radius endstop
 #define max_software_endstop_r true
@@ -654,7 +659,7 @@ on this endstop.
 // If during homing the endstop is reached, ho many mm should the printer move back for the second try
 #define ENDSTOP_X_BACK_MOVE 5
 #define ENDSTOP_Y_BACK_MOVE 5
-#define ENDSTOP_Z_BACK_MOVE 2
+#define ENDSTOP_Z_BACK_MOVE 5
 
 // For higher precision you can reduce the speed for the second test on the endstop
 // during homing operation. The homing speed is divided by the value. 1 = same speed, 2 = half speed
@@ -677,9 +682,9 @@ on this endstop.
 // For delta robot Z_MAX_LENGTH is maximum travel of the towers and should be set to the distance between the hotend
 // and the platform when the printer is at its home position.
 // If EEPROM is enabled these values will be overidden with the values in the EEPROM
-#define X_MAX_LENGTH 165
-#define Y_MAX_LENGTH 175
-#define Z_MAX_LENGTH 80
+#define X_MAX_LENGTH 150
+#define Y_MAX_LENGTH 150
+#define Z_MAX_LENGTH 190
 
 // Coordinates for the minimum axis. Can also be negative if you want to have the bed start at 0 and the printer can go to the left side
 // of the bed. Maximum coordinate is given by adding the above X_MAX_LENGTH values.
@@ -702,7 +707,7 @@ on this endstop.
 #if DRIVE_SYSTEM==3
 /** \brief Delta rod length
 */
-#define DELTA_DIAGONAL_ROD 250.0 // mm
+#define DELTA_DIAGONAL_ROD 186.0 // mm
 
 /** \brief Number of segments to generate for delta conversions per second of move
 */
@@ -715,11 +720,11 @@ on this endstop.
 
 /** \brief Horizontal offset of the universal joints on the vertical carriages.
 */
-#define CARRIAGE_HORIZONTAL_OFFSET 18
+#define CARRIAGE_HORIZONTAL_OFFSET 22
 
 /** \brief Printer radius in mm, measured from the center of the print area to the vertical smooth rod.
 */
-#define PRINTER_RADIUS 175
+#define PRINTER_RADIUS 139.5
 
 /**  \brief Horizontal distance bridged by the diagonal push rod when the end effector is in the center. It is pretty close to 50% of the push rod length (250 mm).
 */
@@ -754,12 +759,12 @@ on this endstop.
     */
 #define MAX_FEEDRATE_X 200
 #define MAX_FEEDRATE_Y 200
-#define MAX_FEEDRATE_Z 5
+#define MAX_FEEDRATE_Z 200
 
 /** Speed in mm/min for finding the home position.  Overridden if EEPROM activated. */
 #define HOMING_FEEDRATE_X 80
 #define HOMING_FEEDRATE_Y 80
-#define HOMING_FEEDRATE_Z 3
+#define HOMING_FEEDRATE_Z 80
 
 /* If you have a backlash in both z-directions, you can use this. For most printer, the bed will be pushed down by it's
 own weight, so this is nearly never needed. */
@@ -839,7 +844,7 @@ Corner can be printed with full speed of 50 mm/s
 Overridden if EEPROM activated.
 */
 #define MAX_JERK 20.0
-#define MAX_ZJERK 0.3
+#define MAX_ZJERK 20.0
 
 /** \brief Number of moves we can cache in advance.
 
@@ -1020,7 +1025,7 @@ matches, the stored values are used to overwrite the settings.
 IMPORTANT: With mode <>0 some changes in configuration.h are not set any more, as they are 
            taken from the EEPROM.
 */
-#define EEPROM_MODE 1
+#define EEPROM_MODE 0
 /** Set to false to disable SD support: */
 #ifndef SDSUPPORT  // Some boards have sd support on board. These define the values already in pins.h
 #define SDSUPPORT false
@@ -1062,7 +1067,7 @@ The following settings override uiconfig.h!
 4 = Foltyn 3DMaster with display attached
 5 = ViKi LCD - Check pin configuration in ui.h for feature controller 5!!! sd card disabled by default!
 */
-#define FEATURE_CONTROLLER 0
+#define FEATURE_CONTROLLER 2
 
 /**
 Select the language to use.
@@ -1072,7 +1077,7 @@ Select the language to use.
 3 = brazilian portuguese
 4 = italian
 */
-#define UI_LANGUAGE 1
+#define UI_LANGUAGE 0
 
 // This is line 2 of the status display at startup. Change to your like.
 #define UI_VERSION_STRING2 "Ordbot"
