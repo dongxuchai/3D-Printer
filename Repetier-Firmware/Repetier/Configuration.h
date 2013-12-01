@@ -425,9 +425,13 @@ If you have a PTC thermistor instead of a NTC thermistor, keep the adc values in
   {107*4, 200*8},{119*4, 195*8},{129*4, 190*8},{142*4, 185*8},{156*4, 180*8},{171*4, 175*8},{187*4, 170*8},{204*4, 165*8},{224*4, 160*8},{245*4, 155*8},{271*4, 150*8},{297*4, 145*8},{321*4, 140*8},{351*4, 135*8},\
   {370*4, 130*8},{402*4, 125*8},{451*4, 120*8},{502*4, 115*8},{533*4, 110*8},{551*4, 105*8},{570*4, 100*8},{610*4, 95*8},{661*4, 90*8},{731*4, 80*8},{801*4, 70*8},\
   {856*4, 60*8},{901*4, 50*8},{950*4, 40*8},{977*4, 30*8},{991*4, 20*8},{1003*4, 10*8},{1011*4, 0*8}}
+
 /** Number of entries in the user thermistortable 2. Set to 0 to disable it. */
-#define NUM_TEMPS_USERTHERMISTOR2 0
-#define USER_THERMISTORTABLE2  {}  
+#define NUM_TEMPS_USERTHERMISTOR2 30
+#define USER_THERMISTORTABLE2  {\
+{1*4, 816*8},{36*4, 282*8},{71*4, 233*8},{106*4, 207*8},{141*4, 189*8},{176*4, 176*8},{211*4, 165*8},{246*4, 156*8},{281*4, 148*8},{316*4, 141*8},\
+{351*4, 135*8},{386*4, 129*8},{421*4, 123*8},{456*4, 118*8},{491*4, 113*8},{526*4, 108*8},{561*4, 103*8},{596*4, 98*8},{631*4, 93*8},{666*4, 89*8},\
+{701*4, 84*8},{736*4, 79*8},{771*4, 74*8},{806*4, 68*8},{841*4, 62*8},{876*4, 55*8},{911*4, 47*8},{946*4, 37*8},{981*4, 23*8},{1016*4, 0*8}}  
 
 /** If defined, creates a thermistortable at startup.
 
@@ -520,7 +524,7 @@ Value is used for all generic tables created. */
 
 // Select type of your heated bed. It's the same as for EXT0_TEMPSENSOR_TYPE
 // set to 0 if you don't have a heated bed
-#define HEATED_BED_SENSOR_TYPE 1
+#define HEATED_BED_SENSOR_TYPE 7
 /** Analog pin of analog sensor to read temperature of heated bed.  */
 #define HEATED_BED_SENSOR_PIN TEMP_1_PIN
 /** \brief Pin to enable heater for bed. */
@@ -684,7 +688,7 @@ on this endstop.
 // If EEPROM is enabled these values will be overidden with the values in the EEPROM
 #define X_MAX_LENGTH 150
 #define Y_MAX_LENGTH 150
-#define Z_MAX_LENGTH 222
+#define Z_MAX_LENGTH 185
 
 // Coordinates for the minimum axis. Can also be negative if you want to have the bed start at 0 and the printer can go to the left side
 // of the bed. Maximum coordinate is given by adding the above X_MAX_LENGTH values.
