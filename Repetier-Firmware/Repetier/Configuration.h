@@ -160,7 +160,7 @@ the wrong direction change INVERT_X_DIR or INVERT_Y_DIR.
 #define EXT0_X_OFFSET 0
 #define EXT0_Y_OFFSET 0
 // for skeinforge 40 and later, steps to pull the plasic 1 mm inside the extruder, not out.  Overridden if EEPROM activated.
-#define EXT0_STEPS_PER_MM 413 //385
+#define EXT0_STEPS_PER_MM 186 //385 416
 // What type of sensor is used?
 // 1 is 100k thermistor (Epcos B57560G0107F000 - RepRap-Fab.org and many other)
 // 2 is 200k thermistor
@@ -346,7 +346,7 @@ A good start is 30 lower then the optimal value. You need to leave room for cool
 /** I-gain.  Overridden if EEPROM activated.
 */
 #define EXT1_PID_I   0.88
-/** Dgain.  Overridden if EEPROM activated.*/
+/** Dgain.  Overridden if activated.*/
 #define EXT1_PID_D 200
 // maximum time the heater is can be switched on. Max = 255.  Overridden if EEPROM activated.
 #define EXT1_PID_MAX 255
@@ -688,7 +688,7 @@ on this endstop.
 // If EEPROM is enabled these values will be overidden with the values in the EEPROM
 #define X_MAX_LENGTH 150
 #define Y_MAX_LENGTH 150
-#define Z_MAX_LENGTH 185
+#define Z_MAX_LENGTH 190
 
 // Coordinates for the minimum axis. Can also be negative if you want to have the bed start at 0 and the printer can go to the left side
 // of the bed. Maximum coordinate is given by adding the above X_MAX_LENGTH values.
