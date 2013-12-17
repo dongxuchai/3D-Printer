@@ -855,7 +855,7 @@ Overridden if EEPROM activated.
 This number of moves can be cached in advance. If you wan't to cache more, increase this. Especially on
 many very short moves the cache may go empty. The minimum value is 5.
 */
-#define MOVE_CACHE_SIZE 16
+#define MOVE_CACHE_SIZE 32
 
 /** \brief Low filled cache size. 
 
