@@ -180,7 +180,7 @@ the wrong direction change INVERT_X_DIR or INVERT_Y_DIR.
 // 100 is AD595
 // 101 is MAX6675
 // original 1
-#define EXT0_TEMPSENSOR_TYPE 6 
+#define EXT0_TEMPSENSOR_TYPE 5
 // Analog input pin for reading temperatures or pin enabling SS for MAX6675
 #define EXT0_TEMPSENSOR_PIN TEMP_0_PIN
 // WHich pin enables the heater
@@ -412,11 +412,19 @@ temperature*8.
 If you have a PTC thermistor instead of a NTC thermistor, keep the adc values increasing and use themistor types 50-52 instead of 5-7! 
 */
 /** Number of entries in the user thermistortable 0. Set to 0 to disable it. */
-#define NUM_TEMPS_USERTHERMISTOR0 28
+#define NUM_TEMPS_USERTHERMISTOR0 103
 #define USER_THERMISTORTABLE0  {\
-  {1*4,864*8},{21*4,300*8},{25*4,290*8},{29*4,280*8},{33*4,270*8},{39*4,260*8},{46*4,250*8},{54*4,240*8},{64*4,230*8},{75*4,220*8},\
-  {90*4,210*8},{107*4,200*8},{128*4,190*8},{154*4,180*8},{184*4,170*8},{221*4,160*8},{265*4,150*8},{316*4,140*8},{375*4,130*8},\
-  {441*4,120*8},{513*4,110*8},{588*4,100*8},{734*4,80*8},{856*4,60*8},{938*4,40*8},{986*4,20*8},{1008*4,0*8},{1018*4,-20*8}	}
+   {1*4, 938*8},{11*4, 423*8},{21*4, 351*8},{31*4, 314*8},{41*4, 290*8},{51*4, 272*8},{61*4, 258*8},{71*4, 247*8},{81*4, 237*8},{91*4, 229*8},\
+   {101*4, 221*8},{111*4, 215*8},{121*4, 209*8},{131*4, 204*8},{141*4, 199*8},{151*4, 195*8},{161*4, 190*8},{171*4, 187*8},{181*4, 183*8},{191*4, 179*8},\
+   {201*4, 176*8},{211*4, 173*8},{221*4, 170*8},{231*4, 167*8},{241*4, 165*8},{251*4, 162*8},{261*4, 160*8},{271*4, 157*8},{281*4, 155*8},{291*4, 153*8},\
+   {301*4, 150*8},{311*4, 148*8},{321*4, 146*8},{331*4, 144*8},{341*4, 142*8},{351*4, 140*8},{361*4, 139*8},{371*4, 137*8},{381*4, 135*8},{391*4, 133*8},\
+   {401*4, 131*8},{411*4, 130*8},{421*4, 128*8},{431*4, 126*8},{441*4, 125*8},{451*4, 123*8},{461*4, 122*8},{471*4, 120*8},{481*4, 119*8},{491*4, 117*8},\
+   {501*4, 116*8},{511*4, 114*8},{521*4, 113*8},{531*4, 111*8},{541*4, 110*8},{551*4, 108*8},{561*4, 107*8},{571*4, 105*8},{581*4, 104*8},{591*4, 102*8},\
+   {601*4, 101*8},{611*4, 100*8},{621*4, 98*8},{631*4, 97*8},{641*4, 95*8},{651*4, 94*8},{661*4, 92*8},{671*4, 91*8},{681*4, 90*8},{691*4, 88*8},\
+   {701*4, 87*8},{711*4, 85*8},{721*4, 84*8},{731*4, 82*8},{741*4, 81*8},{751*4, 79*8},{761*4, 77*8},{771*4, 76*8},{781*4, 74*8},{791*4, 72*8},\
+   {801*4, 71*8},{811*4, 69*8},{821*4, 67*8},{831*4, 65*8},{841*4, 63*8},{851*4, 62*8},{861*4, 60*8},{871*4, 57*8},{881*4, 55*8},{891*4, 53*8},\
+   {901*4, 51*8},{911*4, 48*8},{921*4, 45*8},{931*4, 42*8},{941*4, 39*8},{951*4, 36*8},{961*4, 32*8},{971*4, 28*8},{981*4, 23*8},{991*4, 17*8},\
+   {1001*4, 9*8},{1011*4, -1*8},{1021*4, -26*8}}
 
 /** Number of entries in the user thermistortable 1. Set to 0 to disable it. */
 #define NUM_TEMPS_USERTHERMISTOR1 47
@@ -715,7 +723,7 @@ on this endstop.
 
 /** \brief Number of segments to generate for delta conversions per second of move
 */
-#define DELTA_SEGMENTS_PER_SECOND_PRINT 200 // Move accurate setting for print moves
+#define DELTA_SEGMENTS_PER_SECOND_PRINT 300 // Move accurate setting for print moves original : 200
 #define DELTA_SEGMENTS_PER_SECOND_MOVE 70 // Less accurate setting for other moves
 
 /** \brief Horizontal offset of the universal joints on the end effector (moving platform).
@@ -728,7 +736,8 @@ on this endstop.
 
 /** \brief Printer radius in mm, measured from the center of the print area to the vertical smooth rod.
 */
-#define PRINTER_RADIUS 139.5
+#define PRINTER_RADIUS 140
+
 
 /**  \brief Horizontal distance bridged by the diagonal push rod when the end effector is in the center. It is pretty close to 50% of the push rod length (250 mm).
 */
@@ -855,7 +864,7 @@ Overridden if EEPROM activated.
 This number of moves can be cached in advance. If you wan't to cache more, increase this. Especially on
 many very short moves the cache may go empty. The minimum value is 5.
 */
-#define MOVE_CACHE_SIZE 32
+#define MOVE_CACHE_SIZE 16
 
 /** \brief Low filled cache size. 
 
